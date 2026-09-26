@@ -7,38 +7,50 @@ public sealed class PresenceTracker
     private ReceiveDataMessage? _previous;
     private DateTime _previousAt;
     
+    private ReceiveDataMessage? _lastSent;
+    
     public bool ShouldUpdate(ReceiveDataMessage current)
     {
-        if (_previous is null)
-        {
-            return true;
-        }
-        
-        if (current.position == 0 && !current.paused!.Value)
+        if (current.position == 0 && current.paused != true)
         {
             return false;
         }
-        
-        if (_previous is not null) 
+
+        if (_lastSent is null)
         {
-            var elapsed = (DateTime.UtcNow - _previousAt).TotalSeconds;
-            var expected = _previous.position.GetValueOrDefault() + elapsed;
-            var drift = Math.Abs(current.position.GetValueOrDefault() - expected);
-            var scrubbed = drift > 2;
-            var raw = current.position.GetValueOrDefault() - expected;
-            Program.Log($"raw drift: {raw:F2}");
-            Program.Log($"drift: {drift:f2}");
-            
-            return _previous.title != current.title
-                   || _previous.paused != current.paused
-                   || scrubbed;
+            return true;
         }
-        return false;
+
+        if (_lastSent.title != current.title || _lastSent.paused != current.paused)
+        {
+            return true;
+        }
+
+        return HasScrubbed(current);
     }
     
     public void Update(ReceiveDataMessage current)
     {
         _previous = current;
         _previousAt = DateTime.UtcNow;
+    }
+    public void MarkSent(ReceiveDataMessage current)
+    {
+        _lastSent = current;
+    }
+
+    
+    private bool HasScrubbed(ReceiveDataMessage current)
+    {
+        if (_previous is null || current.paused == true || _previous.paused == true)
+        {
+            return false;
+        }
+
+        var elapsed = (DateTime.UtcNow - _previousAt).TotalSeconds;
+        var expected = _previous.position.GetValueOrDefault() + elapsed;
+        var drift = Math.Abs(current.position.GetValueOrDefault() - expected);
+
+        return drift > 2;
     }
 }

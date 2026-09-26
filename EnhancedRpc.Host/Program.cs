@@ -80,6 +80,7 @@ public static class Program
                 {
                     Log("state changed, updating presence");
                     rpc.SetPresence(state!, client);
+                    tracker.MarkSent(state!);
                 }
                 else
                 {
