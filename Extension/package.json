@@ -1,0 +1,7 @@
+{
+  "name": "Extension",
+  "packageManager": "yarn@4.14.1",
+  "dependencies": {
+    "@types/chrome": "^0.3.0"
+  }
+}

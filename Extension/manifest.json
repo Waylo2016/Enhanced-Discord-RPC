@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4aZEWXsoSTEWHl0yrqfaf9iwYNWVk5KYOJTFw88Xu21kl3LTiXI2bLBGWjMvdSK09FU4Ss3P16PFbuUQHqReXnoye6MApJVwpR8XaaUSyOi0x+362MlUTRl/JQNMvXh0yFupGn44sHYkSNrXtKf7iIIFHCRDPU9Oq27MgNMj4nG/C28m8zhp2Xn4lOZCgP1m/BJIyJ8FpJj/3n2Y+O+d+miWrR6TcGRw2GeVK7uNuX6TUDqWfERYPo/RdszNzEUXbESO8J3XWBvBBHk/OZasanWJcn6MX+xdFgynl8DAv1UYUq87b6xxG7WwOky++rJV9oiazOQl/WlISRmu9oy2vQIDAQAB",
+  "name": "YouPresence",
+  "version": "0.1",
+  "description": "An enhanced Discord Rich Presence for YouTube",
+  "permissions": [
+    "nativeMessaging"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ]
+}
