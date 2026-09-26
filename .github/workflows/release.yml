@@ -4,6 +4,9 @@ on:
   push:
     tags:
       - "v*"
+      - 
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -33,5 +36,4 @@ jobs:
           files: |
             installer-output/YouPresence-Setup.exe
             YouPresence-Extension.zip
-permissions: 
-  contents: write
+
