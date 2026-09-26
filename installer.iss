@@ -1,6 +1,6 @@
 [Setup]
 AppName=YouPresence
-AppVersion=0.1
+AppVersion=0.3
 AppPublisher=Waylo
 DefaultDirName={autopf}\YouPresence
 DisableProgramGroupPage=yes
@@ -14,7 +14,7 @@ PrivilegesRequired=lowest
 Source: "publish\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
 
 [Run]
-Filename: "{app}\EnhancedRpc.Host.exe"; Parameters: "--register"; Flags: runhidden
+Filename: "{app}\YouPresence.Host.exe"; Parameters: "--register"; Flags: runhidden
 
 [UninstallRun]
-Filename: "{app}\EnhancedRpc.Host.exe"; Parameters: "--unregister"; Flags: runhidden waituntilterminated
+Filename: "{app}\YouPresence.Host.exe"; Parameters: "--unregister"; Flags: runhidden waituntilterminated

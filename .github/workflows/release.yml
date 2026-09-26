@@ -19,7 +19,7 @@ jobs:
           dotnet-version: "10.0.x"
 
       - name: Publish host
-        run: dotnet publish EnhancedRpc.Host -r win-x64 -c Release --self-contained -p:PublishSingleFile=true -o publish
+        run: dotnet publish YouPresence.Host -r win-x64 -c Release --self-contained -p:PublishSingleFile=true -o publish
 
       - name: Build installer
         run: |
