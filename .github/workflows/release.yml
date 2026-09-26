@@ -31,4 +31,4 @@ jobs:
             installer-output/YouPresence-Setup.exe
             YouPresence-Extension.zip
 permissions: 
-  contents: write
+  contents: writee
