@@ -1,0 +1,13 @@
+{
+    "testData" :
+    {
+        "title": "Drag Path",
+        "channel": "twenty one pilots",
+        "channelLink": "https://www.youtube.com/channel/UCnX0L9QiftAcWdzeBx31xCw",
+        "channelIcon": "https://yt3.ggpht.com/QoC1MivAB-3b-lIfg8eL9boIAnpvEAkIXC9qU8Cp1JWTlBiWgX1UeQv9HsrdZk4lOjYe4XMVgg=s48-c-k-c0x00ffffff-no-rj",
+        "videoLink": "https://www.youtube.com/watch?v=6mEYBf5rWPg",
+        "paused": false,
+        "position": 5.233858,
+        "duration": 224.021
+    }
+}
