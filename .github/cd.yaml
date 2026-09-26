@@ -1,0 +1,32 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Publish host
+        run: dotnet publish EnhancedRpc.Host -r win-x64 -c Release --self-contained -p:PublishSingleFile=true -o publish
+
+      - name: Build installer
+        run: |
+          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer.iss
+
+      - name: Zip extension
+        run: Compress-Archive -Path Extension\* -DestinationPath YouPresence-Extension.zip
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            installer-output/YouPresence-Setup.exe
+            YouPresence-Extension.zip
