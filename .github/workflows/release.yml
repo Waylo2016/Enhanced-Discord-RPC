@@ -23,7 +23,10 @@ jobs:
           & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer.iss
 
       - name: Zip extension
-        run: Compress-Archive -Path Extension\* -DestinationPath YouPresence-Extension.zip
+          run: |
+            New-Item -ItemType Directory -Path dist-extension
+            Copy-Item Extension\manifest.json, Extension\background.js, Extension\content.js dist-extension\
+            Compress-Archive -Path dist-extension\* -DestinationPath YouPresence-Extension.zip
 
       - uses: softprops/action-gh-release@v2
         with:
@@ -31,4 +34,4 @@ jobs:
             installer-output/YouPresence-Setup.exe
             YouPresence-Extension.zip
 permissions: 
-  contents: writee
+  contents: write
