@@ -26,7 +26,7 @@ jobs:
           & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" installer.iss
 
       - name: Zip extension
-          run: |
+        run: |
             New-Item -ItemType Directory -Path dist-extension
             Copy-Item Extension\manifest.json, Extension\background.js, Extension\content.js dist-extension\
             Compress-Archive -Path dist-extension\* -DestinationPath YouPresence-Extension.zip
