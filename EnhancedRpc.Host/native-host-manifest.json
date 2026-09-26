@@ -1,0 +1,7 @@
+{
+  "name": "com.youpresence.waylo.tech",
+  "description": "rpc for discord native host",
+  "path": "C:\\Users\\Stijn\\RiderProjects\\Enhanced-Discord-RPC\\EnhancedRpc.Host\\bin\\Debug\\net10.0\\EnhancedRpc.Host.exe",
+  "type": "stdio",
+  "allowed_origins": ["chrome-extension://bphefpfallffjohokcjkcdhmmpljddcg/"]
+}
