@@ -79,7 +79,7 @@ public static class Program
                 if (tracker.ShouldUpdate(state))
                 {
                     Log("state changed, updating presence");
-                    rpc.SetPresence(state!, client);
+                    await rpc.SetPresence(state!, client);
                     tracker.MarkSent(state!);
                 }
                 else
